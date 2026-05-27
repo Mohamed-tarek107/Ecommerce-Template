@@ -1,3 +1,6 @@
+const jwt = require("jsonwebtoken");
+const rateLimit = require("express-rate-limit");
+
 const ensureAuthenticated = (req, res, next) => {
     const authHeader = req.headers.authorization;
 
@@ -22,3 +25,5 @@ const requireAdmin = async (req,res,next) => {
 }
     next();
 }
+
+module.exports = { requireAdmin, ensureAuthenticated }
