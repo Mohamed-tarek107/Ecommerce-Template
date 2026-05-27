@@ -13,13 +13,12 @@ const registerRoute = async (req, res) => {
         });
     }
 
-    const { fullname, email, phonenumber, password, confirmpassword  } = req.body
-    
-    if(!email && !phonenumber) return res.status(400).json({ message: "Provide Email or Phone Number" })
+    const { fullname, email, phonenumber, password, confirmpassword } = req.body
+
+    if (!email && !phonenumber) return res.status(400).json({ message: "Provide Email or Phone Number" })
     if (password !== confirmpassword) return res.status(400).json({ message: "Password doesn't match confirmation" })
 
     try {
-        // Check for existing user by email or phone
         let existingUser;
         if (email) {
             const result = await db.query(
@@ -40,7 +39,7 @@ const registerRoute = async (req, res) => {
             `INSERT INTO users (fullname, email, phonenumber, hashedpass, is_firstlogin, role) VALUES($1, $2, $3, $4, $5)`,
             [fullname, email || null, phonenumber || null, hashedPass, true, 'user']
         );
-        
+
         return res.status(201).json({ message: "User registered successfully" })
     } catch (error) {
         console.error("Register error:", error);
@@ -48,7 +47,7 @@ const registerRoute = async (req, res) => {
     }
 }
 
-const loginUser = async (req,res) => {
+const loginUser = async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({
@@ -59,7 +58,7 @@ const loginUser = async (req,res) => {
 
     const { email, phonenumber, password } = req.body
 
-    if(!email && !phonenumber) return res.status(400).json({ message: "Provide Email or Phone Number" })
+    if (!email && !phonenumber) return res.status(400).json({ message: "Provide Email or Phone Number" })
 
     try {
         // Find user by email or phone
@@ -82,17 +81,30 @@ const loginUser = async (req,res) => {
         const user = existingUser[0];
 
         const isMatch = await bcrypt.compare(password, user.hashedpass);
-        if(!isMatch) return res.status(400).json({ message: "Incorrect password" });
+        if (!isMatch) return res.status(400).json({ message: "Incorrect password" });
 
-        let payload = { 
+        let payload = {
             id: user.id,
             role: user.role
         }
         const accesstoken = jwt.sign(payload, process.env.JWT_ACCESS_SECRET, { expiresIn: '1h' });
         const refreshtoken = jwt.sign(payload, process.env.JWT_REFRESH_SECRET, { expiresIn: '7d' })
 
-
-        return res.status(200).json({ token, user: { id: user.id, fullname: user.fullname, is_firstlogin: user.is_firstlogin } });
+        res.cookie("refreshToken", refreshtoken, {
+            httpOnly: true,
+            secure: true,        // HTTPS only — mandatory for Safari
+            sameSite: "None",
+            maxAge: 30 * 24 * 60 * 60 * 1000 //30 days
+        });
+        res.status(200).json({
+            accessToken: accesstoken,
+            user: {
+                id: user.id,
+                name: user.name,
+                email: user.email,
+                role: user.role
+            }
+        });
     } catch (error) {
         console.error("Login error:", error);
         return res.status(500).json({ message: "Server error" });
