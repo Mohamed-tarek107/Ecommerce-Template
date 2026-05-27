@@ -142,3 +142,20 @@ const refreshRoute = async (req, res) => {
         return res.status(500).json({ message: "Server error" });
     }
 }
+
+const logout = async (req, res) => {
+    try {
+        const refreshToken = req.cookies.refreshToken;
+        if (!refreshToken) return res.status(400).json({ message: "No refresh token found" });
+
+        await db.query("DELETE FROM refreshtokens WHERE refresh_token = $1", [refreshToken])
+        res.clearCookie("refreshToken", { httpOnly: true, secure: isProduction, sameSite: sameSitePolicy, path: "/" });
+
+        return res.status(200).json({ message: "Logged out" });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: "Server error" });
+    }
+}
+
+module.exports = { registerRoute, loginUser, refreshRoute, logout} 
