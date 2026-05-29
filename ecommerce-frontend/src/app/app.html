@@ -1,8 +1,7 @@
-<app-splash-screen
-  *ngIf="showSplash"
-  (done)="showSplash = false"
-/>
+<app-splash-screen *ngIf="showSplash" (done)="showSplash = false" />
 
 <div *ngIf="!showSplash">
-  <router-outlet />
+    <app-navbar (toggleSidenav)="sidenavOpen = !sidenavOpen" />
+    <app-sidenav [isOpen]="sidenavOpen" (close)="sidenavOpen = false" />
+    <router-outlet />
 </div>
