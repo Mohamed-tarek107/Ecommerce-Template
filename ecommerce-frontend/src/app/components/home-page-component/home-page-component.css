@@ -1,0 +1,112 @@
+/* Filter Bar */
+.filter-section {
+    padding: 4rem 1.5rem 2rem;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.filter-btn {
+    padding: 0.5rem 1.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid #747878;
+    background: none;
+    color: #1d1c17;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: #000;
+    color: #fff;
+    border-color: #000;
+}
+
+.filter-quote {
+    font-family: 'Libre Caslon Text', serif;
+    font-size: 1.25rem;
+    font-style: italic;
+    color: #444748;
+    opacity: 0.6;
+}
+
+/* Product Sections */
+.product-section {
+    padding: 2rem 0;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    font-family: 'Libre Caslon Text', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    color: #000;
+    line-height: 1.2;
+}
+
+.section-link {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #000;
+    text-decoration: none;
+    border-bottom: 1px solid #000;
+    padding-bottom: 0.25rem;
+    transition: opacity 0.2s;
+}
+
+.section-link:hover {
+    opacity: 0.6;
+}
+
+/* Carousel */
+.carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 1.5rem;
+    padding: 0 1.5rem 2rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-snap-type: x mandatory;
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+/* Card Placeholder — replace with <app-product-card> later */
+.card-placeholder {
+    min-width: 280px;
+    aspect-ratio: 3 / 4;
+    background: #f2ede5;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+    .card-placeholder {
+        min-width: 340px;
+    }
+}
