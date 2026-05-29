@@ -1,1 +1,8 @@
-<router-outlet></router-outlet>
+<app-splash-screen
+  *ngIf="showSplash"
+  (done)="showSplash = false"
+/>
+
+<div *ngIf="!showSplash">
+  <router-outlet />
+</div>

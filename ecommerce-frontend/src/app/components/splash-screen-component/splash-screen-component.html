@@ -1,1 +1,22 @@
-<p>splash-screen-component works!</p>
+<div
+  *ngIf="visible"
+  [@fadeOut]="animState"
+  class="splash-overlay"
+>
+  <div class="splash-content">
+
+    <h1 class="splash-title" [@lettersIn]>
+      <span
+        *ngFor="let letter of letters"
+        class="letter"
+      >{{ letter }}</span>
+    </h1>
+
+    <div class="divider" [@dividerIn]></div>
+
+    <p class="splash-quote" [@quoteIn]>
+      "Elegance is the only beauty that never fades."
+    </p>
+
+  </div>
+</div>
