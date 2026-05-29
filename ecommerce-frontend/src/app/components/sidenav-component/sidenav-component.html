@@ -1,57 +1,53 @@
 <div class="sidenav-wrapper" [class.open]="isOpen">
 
-  <!-- Backdrop -->
-  <div class="backdrop" (click)="close.emit()"></div>
+    <!-- Backdrop -->
+    <div class="backdrop" (click)="close.emit()"></div>
 
-  <!-- Drawer -->
-  <aside class="drawer" [@slideIn]="isOpen ? 'open' : 'closed'">
+    <!-- Drawer -->
+    <aside class="drawer" [@slideIn]="isOpen ? 'open' : 'closed'">
 
-    <div class="drawer-header">
-      <span class="drawer-brand">LUMINA</span>
-      <button class="icon-btn" (click)="close.emit()">
-        <span class="material-symbols-outlined">close</span>
-      </button>
-    </div>
+        <div class="drawer-header">
+            <span class="drawer-brand">LUMINA</span>
+            <button class="icon-btn" (click)="close.emit()">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
 
-    <nav class="drawer-nav">
-      <a href="#" class="nav-link active">
-        <span class="material-symbols-outlined">auto_awesome</span>
-        New Arrivals
-      </a>
-      <a href="#" class="nav-link">
-        <span class="material-symbols-outlined">auto_stories</span>
-        Collections
-      </a>
-      <a href="#" class="nav-link">
-        <span class="material-symbols-outlined">military_tech</span>
-        Signature
-      </a>
-      <a href="#" class="nav-link">
-        <span class="material-symbols-outlined">eco</span>
-        Sustainability
-      </a>
-      <a href="#" class="nav-link">
-        <span class="material-symbols-outlined">stylus</span>
-        Bespoke
-      </a>
-    </nav>
+        <nav class="drawer-nav">
+            <a href="#" class="nav-link active">
+                <span class="material-symbols-outlined">auto_awesome</span>
+                Lesa mazbthash
+            </a>
+            <a href="#" class="nav-link">
+                <span class="material-symbols-outlined">auto_stories</span>
+                Lesa mazbthash
+            </a>
+            <a href="#" class="nav-link">
+                <span class="material-symbols-outlined">military_tech</span>
+                Lesa mazbthash
+            </a>
+            <a href="#" class="nav-link">
+                <span class="material-symbols-outlined">eco</span>
+                Lesa mazbthash
+            </a>
+            <a href="#" class="nav-link">
+                <span class="material-symbols-outlined">stylus</span>
+                Lesa mazbthash
+            </a>
+        </nav>
 
-    <div class="drawer-footer">
-      <a href="#" class="footer-link">
-        <span class="material-symbols-outlined">mail</span>
-        Contact
-      </a>
-      <a href="#" class="footer-link">
-        <span class="material-symbols-outlined">local_shipping</span>
-        Shipping
-      </a>
-      <a href="#" class="footer-link">
-        <span class="material-symbols-outlined">gavel</span>
-        Legal
-      </a>
-      <button class="shop-btn">SHOP LATEST</button>
-      <p class="copyright">© 2024 LUMINA. ALL RIGHTS RESERVED.</p>
-    </div>
+        <div class="drawer-footer">
+            <a href="#" class="footer-link">
+                <span class="material-symbols-outlined">mail</span>
+                Contact
+            </a>
+            <a href="#" class="footer-link">
+                <span class="material-symbols-outlined">gavel</span>
+                Policies
+            </a>
+            <button class="shop-btn">SHOP LATEST</button>
+            <p class="copyright">© 2026 LUMINA. ALL RIGHTS RESERVED.</p>
+        </div>
 
-  </aside>
+    </aside>
 </div>
