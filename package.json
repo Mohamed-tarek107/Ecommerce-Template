@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Mohamed-tarek107/Ecommerce-Template#readme",
   "dependencies": {
+    "@angular/animations": "^21.2.15",
     "@google/generative-ai": "^0.24.1",
     "axios": "^1.16.1",
     "bcryptjs": "^3.0.3",
