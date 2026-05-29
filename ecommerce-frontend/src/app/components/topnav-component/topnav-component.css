@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap');
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  background-color: #fef9f0;
+  border-bottom: 1px solid #c4c7c7;
+}
+
+.navbar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 5rem;
+  padding: 0 1.5rem;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.brand {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Libre Caslon Text', serif;
+  font-size: 1.5rem;
+  letter-spacing: 0.3em;
+  color: #000;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: #000;
+  opacity: 1;
+  transition: opacity 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.icon-btn:hover {
+  opacity: 0.6;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+  font-size: 1.5rem;
+}

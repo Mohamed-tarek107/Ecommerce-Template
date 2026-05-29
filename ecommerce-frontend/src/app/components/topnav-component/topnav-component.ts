@@ -1,9 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-topnav-component',
-  imports: [],
-  templateUrl: './topnav-component.html',
+  selector: 'app-navbar',
+  standalone: true,
+  imports: [CommonModule],
+    templateUrl: './topnav-component.html',
   styleUrl: './topnav-component.css',
 })
-export class TopnavComponent {}
+export class NavbarComponent {
+  @Output() toggleSidenav = new EventEmitter<void>();
+}
