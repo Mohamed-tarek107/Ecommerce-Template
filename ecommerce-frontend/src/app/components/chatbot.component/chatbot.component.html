@@ -1,0 +1,65 @@
+<!-- Floating button -->
+<button class="chat-fab" (click)="toggle()" [class.open]="isOpen" aria-label="Open chat">
+  <span class="material-symbols-outlined fab-icon">
+    {{ isOpen ? 'close' : 'chat_bubble' }}
+  </span>
+  <span class="fab-label" *ngIf="!isOpen">Style Help</span>
+</button>
+
+<!-- Chat window -->
+<div class="chat-window" [@slideUp] *ngIf="isOpen">
+
+  <!-- Header -->
+  <div class="chat-header">
+    <div class="chat-header-info">
+      <div class="chat-avatar">L</div>
+      <div>
+        <p class="chat-name">Lumina Assistant</p>
+        <p class="chat-status">
+          <span class="status-dot"></span>
+          Online
+        </p>
+      </div>
+    </div>
+    <button class="chat-close-btn" (click)="toggle()">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+  </div>
+
+  <!-- Messages -->
+  <div class="chat-messages">
+    <div
+      *ngFor="let msg of messages"
+      class="message-row"
+      [class.from-user]="msg.fromUser"
+    >
+      <div class="bubble" [class.user-bubble]="msg.fromUser">
+        <ng-container *ngIf="!msg.loading">{{ msg.text }}</ng-container>
+        <ng-container *ngIf="msg.loading">
+          <span class="typing-dots">
+            <span></span><span></span><span></span>
+          </span>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+  <!-- Input -->
+  <div class="chat-input-row">
+    <input
+      class="chat-input"
+      [(ngModel)]="inputText"
+      (keydown)="onKeydown($event)"
+      placeholder="Ask about styles, sizing..."
+      autocomplete="off"
+    />
+    <button
+      class="chat-send-btn"
+      (click)="send()"
+      [disabled]="!inputText.trim()"
+    >
+      <span class="material-symbols-outlined">send</span>
+    </button>
+  </div>
+
+</div>
