@@ -1,1 +1,150 @@
-<p>product-details-component works!</p>
+<main class="detail-main">
+
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb">
+    <a href="#">Home</a>
+    <span>/</span>
+    <a href="#">Collections</a>
+    <span>/</span>
+    <span class="breadcrumb-current">{{ product?.name }}</span>
+  </nav>
+
+  <!-- Product section -->
+  <section class="product-grid">
+
+    <!-- Images -->
+    <div class="product-images">
+      <div class="main-image-wrapper">
+        <img
+          [src]="product?.imageUrl"
+          [alt]="product?.name"
+          class="main-image"
+        />
+      </div>
+    </div>
+
+    <!-- Info panel -->
+    <div class="product-info">
+
+      <div class="info-header">
+        <div>
+          <p class="info-category">{{ product?.category }}</p>
+          <h1 class="info-name">{{ product?.name }}</h1>
+        </div>
+        <button
+          class="detail-like-btn"
+          [class.liked]="liked"
+          (click)="toggleLike()"
+          aria-label="Add to wishlist"
+        >
+          <span class="material-symbols-outlined">favorite</span>
+        </button>
+      </div>
+
+      <p class="info-price">${{ product?.price }}.00</p>
+
+      <p class="info-description">
+        Meticulously crafted with premium materials, this piece features a refined silhouette and a subtle artisanal finish. Designed for the modern minimalist who values enduring quality and effortless grace.
+      </p>
+
+      <!-- Color selector -->
+      <div class="selector-group">
+        <span class="selector-label">Color</span>
+        <div class="color-options">
+          <button
+            *ngFor="let color of product?.colors"
+            class="color-option"
+            [class.selected]="selectedColor === color"
+            [style.background]="color"
+            (click)="selectColor(color)"
+          ></button>
+        </div>
+      </div>
+
+      <!-- Size selector -->
+      <div class="selector-group">
+        <div class="selector-header">
+          <span class="selector-label">Size</span>
+          <button class="size-guide-btn">Size Guide</button>
+        </div>
+        <div class="size-options">
+          <button
+            *ngFor="let size of sizes"
+            class="size-option"
+            [class.selected]="selectedSize === size"
+            (click)="selectSize(size)"
+          >
+            {{ size }}
+          </button>
+        </div>
+      </div>
+
+      <!-- Qty + Cart -->
+      <div class="cart-row">
+        <div class="qty-control">
+          <button class="qty-btn" (click)="changeQty(-1)">
+            <span class="material-symbols-outlined">remove</span>
+          </button>
+          <span class="qty-value">{{ quantity }}</span>
+          <button class="qty-btn" (click)="changeQty(1)">
+            <span class="material-symbols-outlined">add</span>
+          </button>
+        </div>
+        <button
+          class="detail-cart-btn"
+          [class.added]="addedToCart"
+          (click)="addToCart()"
+        >
+          <span class="material-symbols-outlined">
+            {{ addedToCart ? 'check' : 'shopping_bag' }}
+          </span>
+          {{ addedToCart ? 'Added to Cart' : 'Add to Cart' }}
+        </button>
+      </div>
+
+      <!-- Accordion tabs -->
+      <div class="accordion">
+        <details class="accordion-item" open>
+          <summary class="accordion-summary">
+            <span>Materials & Care</span>
+            <span class="material-symbols-outlined accordion-icon">expand_more</span>
+          </summary>
+          <p class="accordion-body">
+            Handcrafted from responsibly sourced premium materials. Dry clean only. Avoid direct sunlight during storage to maintain fiber integrity.
+          </p>
+        </details>
+        <details class="accordion-item">
+          <summary class="accordion-summary">
+            <span>Shipping & Returns</span>
+            <span class="material-symbols-outlined accordion-icon">expand_more</span>
+          </summary>
+          <p class="accordion-body">
+            Complimentary worldwide shipping on orders over $500. 14-day boutique return policy applies.
+          </p>
+        </details>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- You May Also Like -->
+  <section class="related-section">
+    <h2 class="related-title">You May Also Like</h2>
+    <div class="related-grid">
+      <div
+        *ngFor="let p of relatedProducts"
+        class="related-card"
+        (click)="0"
+      >
+        <div class="related-image-wrapper">
+          <img [src]="p.imageUrl" [alt]="p.name" class="related-image" />
+        </div>
+        <p class="related-name">{{ p.name }}</p>
+        <p class="related-price">${{ p.price }}</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<app-footer-section-component/>

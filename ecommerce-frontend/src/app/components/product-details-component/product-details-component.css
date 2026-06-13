@@ -1,0 +1,418 @@
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+    font-family: 'Material Symbols Outlined';
+}
+
+.detail-main {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 1.5rem 1.5rem 4rem;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #747878;
+    margin-bottom: 2rem;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: #747878;
+    transition: color 0.2s;
+}
+
+.breadcrumb a:hover {
+    color: #000;
+}
+
+.breadcrumb-current {
+    color: #000;
+}
+
+/* Product grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+}
+
+@media (min-width: 768px) {
+    .product-grid {
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 4rem;
+        align-items: start;
+    }
+}
+
+/* Image */
+.main-image-wrapper {
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    background: #f2ede5;
+}
+
+.main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+}
+
+.main-image-wrapper:hover .main-image {
+    transform: scale(1.03);
+}
+
+/* Info panel */
+.product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+    .product-info {
+        position: sticky;
+        top: 6rem;
+    }
+}
+
+.info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.info-category {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #745a27;
+    margin: 0 0 0.375rem;
+}
+
+.info-name {
+    font-family: 'Libre Caslon Text', serif;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 400;
+    color: #000;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.info-price {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    color: #745a27;
+    margin: 0;
+}
+
+.info-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #444748;
+    margin: 0;
+}
+
+/* Like button */
+.detail-like-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: 1px solid #c4c7c7;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: border-color 0.2s;
+}
+
+.detail-like-btn .material-symbols-outlined {
+    font-size: 1.1rem;
+    color: #444748;
+    transition: color 0.2s, font-variation-settings 0.2s;
+}
+
+.detail-like-btn.liked {
+    border-color: #ba1a1a;
+}
+
+.detail-like-btn.liked .material-symbols-outlined {
+    color: #ba1a1a;
+    font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Selectors */
+.selector-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+}
+
+.selector-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.selector-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #1d1c17;
+}
+
+.size-guide-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    text-decoration: underline;
+    color: #444748;
+}
+
+.color-options {
+    display: flex;
+    gap: 0.625rem;
+}
+
+.color-option {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: border-color 0.2s, transform 0.15s;
+    outline-offset: 3px;
+}
+
+.color-option.selected {
+    border-color: #000;
+    transform: scale(1.1);
+}
+
+.size-options {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.5rem;
+}
+
+.size-option {
+    height: 2.75rem;
+    border: 1px solid #c4c7c7;
+    background: none;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    transition: all 0.2s;
+}
+
+.size-option:hover {
+    border-color: #000;
+}
+
+.size-option.selected {
+    background: #000;
+    color: #fff;
+    border-color: #000;
+}
+
+/* Cart row */
+.cart-row {
+    display: flex;
+    gap: 0.75rem;
+    align-items: stretch;
+}
+
+.qty-control {
+    display: flex;
+    align-items: center;
+    border: 1px solid #c4c7c7;
+    height: 3.25rem;
+}
+
+.qty-btn {
+    width: 2.75rem;
+    height: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #444748;
+    transition: color 0.2s;
+}
+
+.qty-btn:hover {
+    color: #000;
+}
+
+.qty-btn .material-symbols-outlined {
+    font-size: 1rem;
+}
+
+.qty-value {
+    min-width: 2rem;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+}
+
+.detail-cart-btn {
+    flex: 1;
+    height: 3.25rem;
+    background: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: background 0.25s;
+}
+
+.detail-cart-btn:hover {
+    background: #745a27;
+}
+
+.detail-cart-btn.added {
+    background: #2e7d32;
+}
+
+.detail-cart-btn .material-symbols-outlined {
+    font-size: 1rem;
+}
+
+/* Accordion */
+.accordion {
+    border-top: 1px solid #c4c7c7;
+    margin-top: 0.5rem;
+}
+
+.accordion-item {
+    border-bottom: 1px solid #c4c7c7;
+}
+
+.accordion-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    cursor: pointer;
+    list-style: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.accordion-summary::-webkit-details-marker {
+    display: none;
+}
+
+.accordion-icon {
+    font-size: 1.2rem;
+    color: #444748;
+    transition: transform 0.3s;
+}
+
+details[open] .accordion-icon {
+    transform: rotate(180deg);
+}
+
+.accordion-body {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    color: #444748;
+    line-height: 1.7;
+    padding-bottom: 1rem;
+    margin: 0;
+}
+
+/* Related section */
+.related-section {
+    margin-top: 5rem;
+    border-top: 1px solid #c4c7c7;
+    padding-top: 3rem;
+}
+
+.related-title {
+    font-family: 'Libre Caslon Text', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #000;
+    margin: 0 0 2rem;
+}
+
+.related-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .related-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.related-card {
+    cursor: pointer;
+}
+
+.related-image-wrapper {
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    background: #f2ede5;
+    margin-bottom: 0.75rem;
+}
+
+.related-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.related-card:hover .related-image {
+    transform: scale(1.04);
+}
+
+.related-name {
+    font-family: 'Libre Caslon Text', serif;
+    font-size: 0.95rem;
+    color: #000;
+    margin: 0 0 0.25rem;
+}
+
+.related-price {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    color: #444748;
+    margin: 0;
+}

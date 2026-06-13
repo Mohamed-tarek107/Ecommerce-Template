@@ -18,6 +18,8 @@ export interface Product {
   templateUrl: './product-card-component.html',
   styleUrl: './product-card-component.css',
 })
+
+
 export class ProductCardComponent {
   @Input() product!: Product;
 
