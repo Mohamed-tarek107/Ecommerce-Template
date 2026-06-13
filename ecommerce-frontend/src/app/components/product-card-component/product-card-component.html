@@ -1,1 +1,53 @@
-<p>product-card-component works!</p>
+<div class="card" (click)="goToDetail()">
+
+  <!-- Image area -->
+  <div class="card-image-wrapper">
+    <img
+      [src]="product.imageUrl"
+      [alt]="product.name"
+      class="card-image"
+    />
+
+    <!-- Like button -->
+    <button
+      class="like-btn"
+      [class.liked]="liked"
+      (click)="toggleLike($event)"
+      aria-label="Add to wishlist"
+    >
+      <span class="material-symbols-outlined">favorite</span>
+    </button>
+  </div>
+
+  <!-- Info -->
+  <div class="card-body">
+    <div class="card-meta">
+      <h3 class="card-name">{{ product.name }}</h3>
+      <span class="card-price">${{ product.price }}</span>
+    </div>
+
+    <p class="card-category">{{ product.category }}</p>
+
+    <!-- Color swatches -->
+    <div class="card-colors">
+      <span
+        *ngFor="let color of product.colors"
+        class="swatch"
+        [style.background]="color"
+      ></span>
+    </div>
+
+    <!-- Add to cart -->
+    <button
+      class="add-to-cart-btn"
+      [class.added]="addedToCart"
+      (click)="addToCart($event)"
+    >
+      <span class="material-symbols-outlined btn-icon">
+        {{ addedToCart ? 'check' : 'shopping_bag' }}
+      </span>
+      {{ addedToCart ? 'Added' : 'Add to Cart' }}
+    </button>
+  </div>
+
+</div>
