@@ -25,7 +25,6 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.get('/', (req, res) => res.json({ ok: true }));
-
 // Minimal global error handler
 app.use((err, req, res, next) => {
     console.error(err && err.stack ? err.stack : err);
