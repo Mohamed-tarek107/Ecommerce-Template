@@ -4,9 +4,8 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 
 if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').config({ path: path.join(__dirname, '.env') });
+    require('dotenv').config({ path: path.join(__dirname, '../.env') });
 }
-
 const app = express();
 
 console.log('Environment:', process.env.NODE_ENV);
