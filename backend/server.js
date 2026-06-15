@@ -23,7 +23,10 @@ app.use(cors({
 app.use(express.json());
 app.use(cookieParser());
 
+const adminRoutes = require("./routes/admin.routes.js");
+
 app.get('/', (req, res) => res.json({ ok: true }));
+app.use("/admin", adminRoutes);
 // Minimal global error handler
 app.use((err, req, res, next) => {
     console.error(err && err.stack ? err.stack : err);
