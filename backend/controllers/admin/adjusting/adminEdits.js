@@ -141,4 +141,74 @@ const updateStock = async (req, res) => {
         return res.status(500).json({ message: 'Internal server error' });
     }
 }
-module.exports = { addProduct, updateStock, deleteProduct };
+
+
+const VALID_STATUSES = [
+    'pending',
+    'confirmed',
+    'shipped',
+    'delivered',
+    'cancelled',
+    'refunded'
+];
+
+const updateOrderStatus = async (req, res) => {
+    const { id } = req.params;
+    const { status } = req.body;
+
+    // validate status value
+    if (!status) {
+        return res.status(400).json({ message: 'status is required' });
+    }
+
+    if (!VALID_STATUSES.includes(status)) {
+        return res.status(400).json({
+            message: `Invalid status. Must be one of: ${VALID_STATUSES.join(', ')}`
+        });
+    }
+
+    try {
+        // check order exists
+        const [order] = await db.query(
+            'SELECT id, status FROM orders WHERE id = ?',
+            [id]
+        );
+
+        if (order.length === 0) {
+            return res.status(404).json({ message: 'Order not found' });
+        }
+
+        const currentStatus = order[0].status;
+
+        // prevent going backwards illogically
+        const statusFlow = {
+            pending: ['confirmed', 'cancelled'],
+            confirmed: ['shipped', 'cancelled'],
+            shipped: ['delivered', 'cancelled'],
+            delivered: ['refunded'],
+            cancelled: [],
+            refunded: []
+        };
+
+        if (!statusFlow[currentStatus].includes(status)) {
+            return res.status(409).json({
+                message: `Cannot transition order from '${currentStatus}' to '${status}'`
+            });
+        }
+
+        await db.query(
+            'UPDATE orders SET status = ? WHERE id = ?',
+            [status, id]
+        );
+
+        return res.status(200).json({
+            message: `Order status updated to '${status}'`
+        });
+
+    } catch (err) {
+        console.error('PATCH /admin/orders/:id/status →', err);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
+}
+
+module.exports = { addProduct, updateStock, deleteProduct, updateOrderStatus };
